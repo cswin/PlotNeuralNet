@@ -12,6 +12,7 @@
 \def\SumColor{rgb:blue,5;green,15}
 \def\poolsep{0.5}
 \def\FcColor{rgb:blue,5;red,2.5;white,5}
+\def\LAColor{rgb:blue,5;red,0;white,5}
 \def\FcReluColor{rgb:blue,5;red,5;white,4}
 \def\SigmoidColor{rgb:blue,5;green,5}
 \def\UnpoolColor{rgb:blue,2;green,1;black,0.3}
@@ -79,7 +80,7 @@
 
 %% Dcnv4
 \pic[shift={(3,0,0)}] at (fc7-east) {Box={name=d4,%
-        xlabel={{"","dummy"}},zlabel=4608,fill=\FcColor,opacity=0.7,height=3,width=3,depth=75}};
+        xlabel={{"","dummy"}},zlabel=4608,fill=\LAColor,opacity=0.7,height=3,width=3,depth=75}};
 %% Dcnv2
 
 
@@ -114,17 +115,17 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CE1
-\pic[shift={(1.2,0,0)}] at (d4-east) {RightBandedBox={name=ce1,caption=fc10,%
+\pic[shift={(3,0,0)}] at (d4-east) {RightBandedBox={name=ce1,caption=fc10,%
         xlabel={{"1","dummy"}},zlabel=512,fill=\FcColor,bandfill=\FcReluColor,%
         height=3,width=3,depth=25}};
 
 % CE2
-\pic[shift={(3,0,0)}] at (ce1-east) {RightBandedBox={name=ce2,caption=fc11,%
+\pic[shift={(0.5,0,0)}] at (ce1-east) {RightBandedBox={name=ce2,caption=fc11,%
         xlabel={{"1","dummy"}},zlabel=512,fill=\FcColor,bandfill=\FcReluColor,%
         height=3,width=3,depth=25}};
 
 % CE3
-\pic[shift={(1,0,0)}] at (ce2-east) {RightBandedBox={name=ce3,caption=fc12,%
+\pic[shift={(0.5,0,0)}] at (ce2-east) {RightBandedBox={name=ce3,caption=fc12,%
         xlabel={{"1","dummy"}},zlabel=1,fill=\FcColor,bandfill=\SigmoidColor,%
         height=3,width=3,depth=5}};
 %
