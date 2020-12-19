@@ -55,6 +55,8 @@ Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), p
 
 See [`examples`](examples) directory for usage.
 
+pdflatex name.tex
+
 ## Python usage
 
 First, create a new directory and a new Python file:
