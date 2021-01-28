@@ -96,6 +96,15 @@
 %% score4
 %\pic[shift={(1,0,13+\skipshift)}] at (cr3-east) {Box={name=score2, caption=heavy pooling,%
 %        fill=\PoolColor,opacity=0.5,height=20,width=3,depth=20}};
+
+
+\pic[shift={(1,0,13+\skipshift)}] at (cr1-west) {Box={name=score2low,%
+        fill=\UnpoolColor,opacity=0.6,height=13,width=1,depth=13}};
+\pic[shift={(0,0,0)}] at (score2low-east) {RightBandedBox={name=ucr4low,%
+        xlabel={{"Attention block","dummy"}},fill=\ConvColor,bandfill=\ConvReluColor,%
+        height=13,width=6,depth=13}};
+
+
 \pic[shift={(1,0,13+\skipshift)}] at (cr3-east) {Box={name=score2,%
         fill=\UnpoolColor,opacity=0.6,height=13,width=1,depth=13}};
 \pic[shift={(0,0,0)}] at (score2-east) {RightBandedBox={name=ucr4,%
@@ -113,19 +122,31 @@
         xlabel={{"1","dummy"}},zlabel=512,fill=\FcColor,bandfill=\FcReluColor,%
         height=3,width=2,depth=25}};
 
+
+
+%% low-road LA-1
+\pic[shift={(10,0,0)}] at (ucr4low-east) {RightBandedBox={name=la1low,caption=fc10,%
+        xlabel={{"1","dummy"}},fill=\FcColor,bandfill=\FcReluColor,%
+        height=3,width=2,depth=25}};
+
+%% low-road LA-2
+\pic[shift={(1,0,0)}] at (la1low-east) {RightBandedBox={name=la2low,caption=fc11,%
+        xlabel={{"1","dummy"}},zlabel=512,fill=\FcColor,bandfill=\FcReluColor,%
+        height=3,width=2,depth=25}};
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CE1
-\pic[shift={(3,0,0)}] at (d4-east) {RightBandedBox={name=ce1,caption=fc10,%
+\pic[shift={(3,0,0)}] at (d4-east) {RightBandedBox={name=ce1,caption=fc12,%
         xlabel={{"1","dummy"}},zlabel=512,fill=\FcColor,bandfill=\FcReluColor,%
         height=3,width=3,depth=25}};
 
 % CE2
-\pic[shift={(0.5,0,0)}] at (ce1-east) {RightBandedBox={name=ce2,caption=fc11,%
+\pic[shift={(0.5,0,0)}] at (ce1-east) {RightBandedBox={name=ce2,caption=fc13,%
         xlabel={{"1","dummy"}},zlabel=512,fill=\FcColor,bandfill=\FcReluColor,%
         height=3,width=3,depth=25}};
 
 % CE3
-\pic[shift={(0.5,0,0)}] at (ce2-east) {RightBandedBox={name=ce3,caption=fc12,%
+\pic[shift={(0.5,0,0)}] at (ce2-east) {RightBandedBox={name=ce3,caption=fc14,%
         xlabel={{"1","dummy"}},zlabel=1,fill=\FcColor,bandfill=\SigmoidColor,%
         height=3,width=3,depth=5}};
 %
@@ -167,15 +188,20 @@
 
 
 \draw [connection_lowroad]  (la1-east)   -- node {\fmidarrow} (la2-west);
-
+\draw [connection_lowroad]  (la1low-east)   -- node {\fmidarrow} (la2low-west);
 
 %
+\path (cr1-west) coordinate[pos=-0.4] (after2low) ;
 \path (cr2-east) -- (p2-west) coordinate[pos=0.4] (after2) ;
 \draw (d4-near)++(0,0,5.5+\skipshift) coordinate (d4h);
 \draw [connection_lowroad]  (after2)    -- node {\fmidarrow} ++(0,0,13+\skipshift) -- node {\fmidarrow} (score2-west);
+\draw [connection_lowroad]  (after2low)    -- node {\fmidarrow} ++(0,0,13+\skipshift) -- node {\fmidarrow} (score2low-west);
 %\draw [connection]  (score2-east) -- node{\fmidarrow} (ucr4-west);
 \draw [connection_lowroad]  (ucr4-east) -- node{\fmidarrow} (la1-west);
 \draw [connection_lowroad]  (la2-east) -- node{\fmidarrow} (d4h) -- node{\fmidarrow}(d4-near);
+
+\draw [connection_lowroad]  (ucr4low-east) -- node{\fmidarrow} (la1low-west);
+\draw [connection_lowroad]  (la2low-east) -- node{\fmidarrow} (d4h) -- node{\fmidarrow}(d4-near);
 %
 
 %\path (ce2-east) -- (ce3-west) coordinate[pos=0.25] (ce3-top) ;
